@@ -1,9 +1,16 @@
 package com.devsu.accountservice.domain.model;
 
 
-import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Account {
 
     private Long accountId;
@@ -16,6 +23,5 @@ public class Account {
 
     private String state;
 
-    private List<Transactions> transactions;
 
 }

@@ -1,9 +1,17 @@
 package com.devsu.accountservice.domain.model;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.time.LocalDateTime;
 
-
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Transactions {
 
     private Long transactionId;
@@ -16,6 +24,6 @@ public class Transactions {
 
     private String balance;
 
-    private Account account;
+    private String accountId;
 
 }

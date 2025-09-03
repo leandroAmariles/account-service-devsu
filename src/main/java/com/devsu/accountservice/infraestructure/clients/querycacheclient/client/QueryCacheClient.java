@@ -15,8 +15,9 @@ public class QueryCacheClient implements IQueryCacheClient {
 
     private final WebClient webClient;
 
+
     @Override
-    public Account  createAccount(AccountRequest account) {
+    public Account getAccount(String id) {
         return null;
     }
 }

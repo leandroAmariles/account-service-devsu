@@ -6,5 +6,5 @@ import com.devsu.accountservice.infraestructure.controller.dto.out.AccountRespon
 
 public interface IQueryCacheClient {
 
-    Account createAccount(AccountRequest account);
+    Account getAccount(String id);
 }
