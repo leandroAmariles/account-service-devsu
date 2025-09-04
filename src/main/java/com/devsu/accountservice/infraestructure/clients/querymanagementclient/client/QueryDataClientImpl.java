@@ -37,6 +37,9 @@ public class QueryDataClientImpl implements IQueryDataClient {
     @Value("${client.query-data-service.path-validate-balance}")
     private String validateBalancePath;
 
+    @Value("${client.query-data-service.path-get-account}")
+    private String getAccountPath;
+
     private final WebClient webClient;
 
     @Override
@@ -73,5 +76,13 @@ public class QueryDataClientImpl implements IQueryDataClient {
                                 .flatMap(errorBody -> Mono.error(new ClientException("Error creando transaction: " + errorBody)))
                 )
                 .bodyToMono(Transactions.class);
+    }
+
+    @Override
+    public Mono<Account> getAccount(String id) {
+        return webClient.get().uri(baseUrl.concat(getAccountPath).concat(id))
+                .headers(httpHeaders -> httpHeaders.setContentType(MediaType.APPLICATION_JSON))
+                .retrieve().bodyToMono(Account.class)
+                .onErrorResume(e -> Mono.error(new ClientException("Error getting account with Query Data Management Service")));
     }
 }

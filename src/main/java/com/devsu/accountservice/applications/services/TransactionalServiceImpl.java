@@ -42,5 +42,11 @@ public class TransactionalServiceImpl implements ITransactionalService {
                }).map(transactionalMapper::transactionDtoToTransactionsResponse);
     }
 
+    @Override
+    public Mono<AccountResponse> getAccountById(String id) {
+        return iQueryDataClient.getAccount(id)
+                .map(transactionalMapper::accountToAccountResponse);
+    }
+
 
 }

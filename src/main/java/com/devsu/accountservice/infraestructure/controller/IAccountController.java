@@ -13,4 +13,6 @@ public interface IAccountController {
 
     ResponseEntity<Mono<TransactionsResponse>> createTransaction(TransactionRequest transactionRequest);
 
+    ResponseEntity<Mono<AccountResponse>> getAccount(String id);
+
 }

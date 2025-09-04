@@ -11,4 +11,6 @@ public interface ITransactionalService {
     Mono<AccountResponse> createAccount(AccountRequest accountRequest);
 
     Mono<TransactionsResponse> createTransaction(TransactionRequest transactionRequest);
+
+    Mono<AccountResponse> getAccountById(String id);
 }

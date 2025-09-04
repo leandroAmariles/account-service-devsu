@@ -6,13 +6,11 @@ import com.devsu.accountservice.infraestructure.controller.dto.in.AccountRequest
 import com.devsu.accountservice.infraestructure.controller.dto.in.TransactionRequest;
 import com.devsu.accountservice.infraestructure.controller.dto.out.AccountResponse;
 import com.devsu.accountservice.infraestructure.controller.dto.out.TransactionsResponse;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
 @RestController
@@ -33,5 +31,11 @@ public class AccountController implements IAccountController {
     @PostMapping("/movimientos")
     public ResponseEntity<Mono<TransactionsResponse>> createTransaction(@RequestBody TransactionRequest transactionRequest) {
         return new ResponseEntity<>(transactionalService.createTransaction(transactionRequest), HttpStatus.OK);
+    }
+
+    @Override
+    @GetMapping("/cuentas/{id}")
+    public ResponseEntity<Mono<AccountResponse>> getAccount(@PathVariable String id) {
+        return new ResponseEntity<>(transactionalService.getAccountById(id), HttpStatus.OK);
     }
 }

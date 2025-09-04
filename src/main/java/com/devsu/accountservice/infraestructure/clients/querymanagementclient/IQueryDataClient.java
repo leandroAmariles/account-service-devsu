@@ -13,4 +13,6 @@ public interface IQueryDataClient {
     Mono<Account> createAccount(AccountRequest account);
 
     Mono<Transactions> createTransaction(TransactionRequest transaction);
+
+    Mono<Account> getAccount(String id);
 }
